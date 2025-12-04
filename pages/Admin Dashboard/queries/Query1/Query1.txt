@@ -1,0 +1,9 @@
+SELECT *
+FROM email_logs
+WHERE message_hash IN (
+    SELECT message_hash
+    FROM email_logs
+    GROUP BY message_hash
+    HAVING COUNT(*) > 1
+)
+ORDER BY message_hash, id;

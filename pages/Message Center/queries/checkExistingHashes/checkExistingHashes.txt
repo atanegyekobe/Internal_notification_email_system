@@ -1,0 +1,3 @@
+SELECT message_hash
+FROM pius.email_logs
+WHERE message_hash = ANY({{this.params.hash_list}});

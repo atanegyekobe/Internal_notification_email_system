@@ -1,0 +1,4 @@
+SELECT job_id, batch_ref, created_at
+FROM pius.email_jobs
+ORDER BY created_at DESC
+LIMIT 1;

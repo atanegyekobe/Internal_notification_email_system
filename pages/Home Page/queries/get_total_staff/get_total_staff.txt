@@ -1,0 +1,1 @@
+SELECT COUNT(staff_ids) AS total_staff FROM pius.staff;

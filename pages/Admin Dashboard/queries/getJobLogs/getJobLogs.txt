@@ -1,0 +1,12 @@
+SELECT 
+  id,
+  job_id,
+  recipient_email,
+  recipient_name,
+  status,
+  error_message,
+  retry_count,
+  sent_at
+FROM email_logs
+WHERE job_id = {{ tblJobs.selectedRow.job_id }}
+ORDER BY id ASC;

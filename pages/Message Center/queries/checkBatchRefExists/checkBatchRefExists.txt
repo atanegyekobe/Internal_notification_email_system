@@ -1,0 +1,9 @@
+SELECT batch_ref, 'jobs' AS source 
+FROM pius.email_jobs
+WHERE batch_ref = '{{ appsmith.store.currentBatchRef }}'
+
+UNION
+
+SELECT batch_ref, 'logs' AS source
+FROM pius.email_logs
+WHERE batch_ref = '{{ appsmith.store.currentBatchRef }}';

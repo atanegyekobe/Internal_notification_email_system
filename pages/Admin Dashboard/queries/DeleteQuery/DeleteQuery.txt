@@ -1,0 +1,2 @@
+DELETE FROM pius."email_templates"
+  WHERE "template_id" = {{data_table.triggeredRow.template_id}};

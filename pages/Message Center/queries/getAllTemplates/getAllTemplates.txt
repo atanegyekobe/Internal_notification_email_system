@@ -1,0 +1,9 @@
+SELECT 
+  template_id,
+  payment_type,
+  subject,
+  body,
+  is_active
+FROM pius.email_templates
+WHERE is_active = 'YES'
+ORDER BY payment_type ASC;

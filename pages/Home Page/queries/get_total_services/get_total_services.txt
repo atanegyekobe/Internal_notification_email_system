@@ -1,0 +1,1 @@
+SELECT COUNT(template_id) AS total_services FROM pius.email_templates;

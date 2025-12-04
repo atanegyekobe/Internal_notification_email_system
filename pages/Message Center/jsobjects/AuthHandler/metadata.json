@@ -1,0 +1,11 @@
+{
+  "gitSyncId": "68f3f3e3241f5a3f1a6c0208_88144654-b07f-4409-845d-c58d0cb508bf",
+  "id": "Message Center_AuthHandler",
+  "unpublishedCollection": {
+    "name": "AuthHandler",
+    "pageId": "Message Center",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": []
+  }
+}

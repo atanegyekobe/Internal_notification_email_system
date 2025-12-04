@@ -1,0 +1,5 @@
+SELECT job_id, batch_ref, status
+FROM pius.email_jobs
+WHERE status IN ('pending', 'running')
+ORDER BY job_id DESC
+LIMIT 1;

@@ -1,0 +1,38 @@
+{
+  "borderRadius": "0px",
+  "bottomRow": 63,
+  "boxShadow": "none",
+  "dynamicBindingPathList": [
+    {
+      "key": "text"
+    }
+  ],
+  "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [],
+  "dynamicTriggerPathList": [],
+  "fontFamily": "Poppins",
+  "fontSize": "1.25rem",
+  "fontStyle": "BOLD",
+  "isLoading": false,
+  "isVisible": "true",
+  "labelTextSize": "0.875rem",
+  "leftColumn": 12,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "originalBottomRow": 63,
+  "originalTopRow": 59,
+  "overflow": "NONE",
+  "parentColumnSpace": 11.78515625,
+  "parentId": "0",
+  "parentRowSpace": 10,
+  "rightColumn": 21,
+  "shouldScrollContents": true,
+  "text": "{{\n  JS_Controller.view === \"jobs\"\n    ? \"📦 EMAIL JOBS \"\n    : \"📧 EMAIL LOGS  \"\n}}\n",
+  "textAlign": "LEFT",
+  "textColor": "#231F20",
+  "topRow": 59,
+  "type": "TEXT_WIDGET",
+  "version": 1,
+  "widgetId": "0kampvd53j",
+  "widgetName": "Text16Copy"
+}

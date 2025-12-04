@@ -1,0 +1,17 @@
+SELECT 
+  job_id,
+  batch_ref,
+  summary_report,
+  updated_at,
+  status,
+  success_count,
+  failure_count,
+  created_by,
+  created_at,
+  started_at,
+	finished_at,
+	total_records,
+	updated_by,
+	summary_report
+FROM email_jobs
+ORDER BY created_at DESC;

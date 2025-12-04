@@ -1,0 +1,16 @@
+SELECT
+  id,
+  job_id,
+  recipient_email,
+  recipient_name,
+	template_id,
+	payment_type,
+  status,
+  retry_count,
+  error_message,
+  sent_at,
+	created_by,
+	created_at,
+	message_hash
+FROM email_logs
+ORDER BY id DESC;

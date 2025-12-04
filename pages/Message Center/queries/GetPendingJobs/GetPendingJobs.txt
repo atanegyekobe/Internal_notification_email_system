@@ -1,0 +1,10 @@
+SELECT 
+  job_id,
+  batch_ref,
+  --payment_type,
+  created_at,
+  total_records,
+  status
+FROM pius.email_jobs
+WHERE status IN ('pending', 'running')
+ORDER BY job_id DESC;

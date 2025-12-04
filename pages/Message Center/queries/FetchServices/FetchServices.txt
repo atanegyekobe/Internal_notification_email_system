@@ -1,0 +1,2 @@
+SELECT payment_type, subject
+FROM pius.email_templates;

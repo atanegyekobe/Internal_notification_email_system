@@ -1,0 +1,3 @@
+SELECT id, full_name, email, password_hash, role, status
+FROM pius.users
+WHERE email = {{ inp_email.text }};

@@ -1,0 +1,6 @@
+SELECT * FROM email_jobs
+WHERE
+  ({{ selStatus.selectedOptionValue }} IS NULL OR status = {{ selStatus.selectedOptionValue }})
+  AND ({{ dpFrom.selectedDate }} IS NULL OR created_at >= {{ dpFrom.selectedDate }})
+  AND ({{ dpTo.selectedDate }} IS NULL OR created_at <= {{ dpTo.selectedDate }})
+ORDER BY created_at DESC;

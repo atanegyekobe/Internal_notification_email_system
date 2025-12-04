@@ -1,0 +1,13 @@
+INSERT INTO email_templates 
+  (payment_type, version, is_active, subject, body, created_by, created_at, updated_at)
+VALUES
+  (
+    '{{ Input1.text }}',
+    '{{ appsmith.store.newVersion || TemplateManager.generateVersionCode(Input1.text, Input2.text) }}',
+    TRUE,
+    '{{ Input2.text }}',
+    '{{ Input3.text }}',
+    '{{appsmith.store.currentUser?.email }}',
+    NOW(),
+    NOW()
+  );

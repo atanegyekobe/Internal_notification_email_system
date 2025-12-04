@@ -1,0 +1,4 @@
+SELECT *
+FROM pius.email_logs
+WHERE created_by = '{{appsmith.store.currentUser.email}}'
+ORDER BY created_at DESC;

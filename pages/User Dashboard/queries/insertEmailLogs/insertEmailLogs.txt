@@ -1,0 +1,66 @@
+INSERT INTO pius.email_logs (
+  batch_ref,
+  job_id,
+  recipient_id,
+  recipient_email,
+  recipient_name,
+  payment_type,
+  payment_amount,
+  template_id,
+  message_hash,
+  status,
+  created_by,
+  created_at
+)
+VALUES
+{{
+(() => {
+  const data = appsmith.store.mergedData || [];
+
+  if (!Array.isArray(data) || data.length === 0) {
+    return "( 'NO-DATA', 0, 'N/A', 'noemail@example.com', 'Unknown', 'Unknown', 0, 0, 'NO-HASH', 'pending', 'system', NOW() )";
+  }
+
+  const batchRef = (appsmith.store.currentBatchRef || "NO-BATCH").replace(/'/g, "''");
+  const jobId = appsmith.store.currentJobId ?? 0;
+  const createdBy = (appsmith.store.currentUser?.email ?? "system@appsmith.io").replace(/'/g, "''");
+
+  return data.map((row) => {
+    const staffId = row?.staff_ids ? `'${row.staff_ids}'` : `'N/A'`;
+
+    const email = row?.email
+      ? `'${String(row.email).replace(/'/g, "''")}'`
+      : `'noemail@example.com'`;
+
+    const fullName = row?.full_name
+      ? `'${String(row.full_name).replace(/'/g, "''")}'`
+      : `'Unknown'`;
+
+    const payType = row?.payment_type
+      ? `'${String(row.payment_type).replace(/'/g, "''")}'`
+      : `'Unknown'`;
+
+    const amount = row?.amount ?? 0;
+    const templateId = row?.template_id ?? 0;
+
+    const hash = row?.message_hash
+      ? `'${row.message_hash}'`
+      : `'NO-HASH'`;
+
+    return `(
+      '${batchRef}',
+      ${jobId},
+      ${staffId},
+      ${email},
+      ${fullName},
+      ${payType},
+      ${amount},
+      ${templateId},
+      ${hash},
+      'pending',
+      '${createdBy}',
+      NOW()
+    )`;
+  }).join(", ");
+})()
+}};

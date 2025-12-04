@@ -1,0 +1,2 @@
+SELECT * from pius.email_jobs
+--where status = 'sent'

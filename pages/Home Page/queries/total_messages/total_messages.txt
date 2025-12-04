@@ -1,0 +1,1 @@
+SELECT COUNT(id) AS total_messages FROM pius.email_logs;

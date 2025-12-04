@@ -1,0 +1,118 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 7,
+  "boxShadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+  "configureMenuItems": {
+    "config": {
+      "id": "config",
+      "isDisabled": false,
+      "isVisible": true,
+      "label": "Menu Item"
+    },
+    "id": "config",
+    "label": "Configure menu items"
+  },
+  "dynamicBindingPathList": [
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "menuColor"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "menuItems.menuItem5b2jazda2k.onClick"
+    },
+    {
+      "key": "menuItems.menuItema2jtyw5v6z.isVisible"
+    },
+    {
+      "key": "menuItems.menuItemkdxlkee81x.onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "menuItems.menuItem1.onClick"
+    },
+    {
+      "key": "menuItems.menuItem2.onClick"
+    },
+    {
+      "key": "menuItems.menuItem5b2jazda2k.onClick"
+    },
+    {
+      "key": "menuItems.menuItemkdxlkee81x.onClick"
+    }
+  ],
+  "iconAlign": "left",
+  "iconName": "align-justify",
+  "isCompact": false,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "mmt6p30v40",
+  "label": "Menu",
+  "leftColumn": 2,
+  "menuColor": "{{appsmith.theme.colors.primaryColor}}",
+  "menuItems": {
+    "menuItem1": {
+      "iconAlign": "left",
+      "id": "menuItem1",
+      "index": 0,
+      "isDisabled": false,
+      "isVisible": true,
+      "label": "Add Message Template",
+      "onClick": "{{showModal(Modal1.name);}}",
+      "widgetId": ""
+    },
+    "menuItem2": {
+      "id": "menuItem2",
+      "index": 1,
+      "isDisabled": false,
+      "isVisible": true,
+      "label": "Update Message Template",
+      "onClick": "{{showModal(Modal3.name);}}",
+      "widgetId": ""
+    },
+    "menuItem5b2jazda2k": {
+      "id": "menuItem5b2jazda2k",
+      "index": 2,
+      "isDisabled": false,
+      "isVisible": true,
+      "label": "View Email Jobs ",
+      "onClick": "{{ JS_Controller.setView(\"jobs\") }}\n",
+      "widgetId": "aghykviggx"
+    },
+    "menuItemkdxlkee81x": {
+      "id": "menuItemkdxlkee81x",
+      "index": 3,
+      "isDisabled": false,
+      "isVisible": true,
+      "label": "View Email Logs",
+      "onClick": "{{ JS_Controller.setView(\"logs\") }}\n",
+      "textColor": "#1e3a8a",
+      "widgetId": "r78at0j0k7"
+    }
+  },
+  "menuItemsSource": "STATIC",
+  "menuVariant": "SECONDARY",
+  "mobileBottomRow": 6,
+  "mobileLeftColumn": 29,
+  "mobileRightColumn": 45,
+  "mobileTopRow": 2,
+  "needsErrorInfo": false,
+  "parentColumnSpace": 15.943359375,
+  "parentId": "gr8d6apocp",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "renderMode": "CANVAS",
+  "rightColumn": 15,
+  "sourceData": [],
+  "topRow": 1,
+  "type": "MENU_BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "bi0dy7tzu4",
+  "widgetName": "MenuButton1"
+}

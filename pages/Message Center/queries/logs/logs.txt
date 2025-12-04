@@ -1,0 +1,2 @@
+ALTER TABLE pius.email_logs
+ALTER COLUMN message_hash TYPE VARCHAR(300);

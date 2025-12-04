@@ -1,0 +1,6 @@
+UPDATE email_logs
+SET 
+  status = 'resent',
+  updated_by = '{{ appsmith.store.currentUser }}',
+  updated_at = NOW()
+WHERE id = {{ log_id }};

@@ -1,0 +1,18 @@
+INSERT INTO pius."email_templates" (
+	"payment_type",
+	"version",
+	"is_active",
+	"subject",
+	"body",
+	"created_by",
+	"created_at",
+	"updated_at")
+VALUES (
+	'{{insert_form.formData.payment_type}}',
+	'{{insert_form.formData.version}}',
+	'{{insert_form.formData.is_active}}',
+	'{{insert_form.formData.subject}}',
+	'{{insert_form.formData.body}}',
+	'{{insert_form.formData.created_by}}',
+	'{{insert_form.formData.created_at}}',
+	'{{insert_form.formData.updated_at}}');

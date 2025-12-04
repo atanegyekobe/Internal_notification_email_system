@@ -1,0 +1,4 @@
+SELECT COUNT(*) AS total
+FROM pius."email_templates"
+WHERE is_active = TRUE
+  AND "payment_type" ILIKE '%{{ data_table.searchText || "" }}%';

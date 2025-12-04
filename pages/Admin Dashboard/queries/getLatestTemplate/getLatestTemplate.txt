@@ -1,0 +1,5 @@
+SELECT payment_type, subject, body, version, created_at
+FROM pius.email_templates
+WHERE is_active = TRUE
+ORDER BY template_id DESC
+LIMIT 1;

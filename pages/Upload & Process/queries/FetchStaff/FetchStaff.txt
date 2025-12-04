@@ -1,0 +1,3 @@
+SELECT staff_ids, full_name, email
+FROM pius.staff
+WHERE staff_ids = ANY({{ this.params.ids }})

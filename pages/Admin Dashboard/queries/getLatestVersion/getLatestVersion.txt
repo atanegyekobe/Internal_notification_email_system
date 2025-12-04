@@ -1,0 +1,3 @@
+SELECT COALESCE(MAX(version), 0) AS latest_version
+FROM pius.email_templates
+WHERE payment_type = {{Input1.text}};

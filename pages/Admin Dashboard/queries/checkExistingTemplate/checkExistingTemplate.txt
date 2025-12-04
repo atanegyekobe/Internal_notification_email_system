@@ -1,0 +1,4 @@
+SELECT template_id, version
+FROM pius.email_templates
+WHERE payment_type = {{Input1.text}}
+AND subject = {{Input2.text}};
