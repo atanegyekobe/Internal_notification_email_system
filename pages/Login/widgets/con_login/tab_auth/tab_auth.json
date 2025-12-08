@@ -4,7 +4,7 @@
   "backgroundColor": "#f4f4f5",
   "borderColor": "#e0dede",
   "borderRadius": "0px",
-  "borderWidth": "",
+  "borderWidth": "1",
   "bottomRow": 57,
   "boxShadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
   "children": [
@@ -130,7 +130,7 @@
   "mobileLeftColumn": 37,
   "mobileRightColumn": 61,
   "mobileTopRow": 92,
-  "originalBottomRow": 58,
+  "originalBottomRow": 57,
   "originalTopRow": 4,
   "parentColumnSpace": 19.8125,
   "parentId": "r7uydixh1i",

@@ -27,7 +27,7 @@
   "parentRowSpace": 10,
   "rightColumn": 21,
   "shouldScrollContents": true,
-  "text": "{{\n  JS_Controller.view === \"jobs\"\n    ? \"📦 EMAIL JOBS \"\n    : \"📧 EMAIL LOGS  \"\n}}\n",
+  "text": "{{\n  JS_Controller.view === \"jobs\"\n    ? \" EMAIL JOBS 📦 \"\n    : \" EMAIL LOGS 📧 \"\n}}\n",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 59,

@@ -31,7 +31,7 @@
   "mobileRightColumn": 60,
   "mobileTopRow": 23,
   "needsErrorInfo": false,
-  "onClick": "{{\n  (function() {\n    if (!Text4.text || Text4.text.trim() === \"\") {\n      showAlert(\"Please enter dataset before continuing.\", \"warning\");\n      Text4;\n      return;\n    }\n\n    storeValue(\"mergedData\", MergedTable.tableData).then(() => {\n      navigateTo(\"Message Center\");\n    });\n  })()\n}}\n",
+  "onClick": "{{\n  (function() {\n    if (!Text4.text || Text4.text.trim() === \"\") {\n      showAlert(\"Please enter dataset before continuing.\", \"warning\");\n      Text4;\n      return;\n    }\n\n    storeValue(\"mergedData\", MergedTable.tableData).then(() => {\n      navigateTo(\"Message Center\");\n    });\n  })()\n}}\n{{ storeValue(\"isFailedMode\", false) }}\n",
   "originalBottomRow": 103,
   "originalTopRow": 97,
   "parentColumnSpace": 19.8125,

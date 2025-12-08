@@ -1,2 +1,5 @@
-ALTER TABLE pius.email_logs
-ALTER COLUMN message_hash TYPE VARCHAR(300);
+SELECT column_name, is_nullable, column_default
+FROM information_schema.columns
+WHERE table_schema = 'pius'
+  AND table_name = 'email_templates'
+ORDER BY ordinal_position;

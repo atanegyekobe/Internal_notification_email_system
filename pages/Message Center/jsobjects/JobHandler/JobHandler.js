@@ -79,6 +79,13 @@ export default {
   async sendBatch() {
     try {
       const data = appsmith.store.mergedData || [];
+
+      // 🛑 Prevent sending failed-email data as new batch
+      if (data.length && data[0]?.original_id) {
+        showAlert("❌ Failed-email data detected. Load fresh staff data before sending.", "error");
+        return;
+      }
+
       if (!data.length) {
         showAlert("⚠️ No records to send.", "warning");
         return;
@@ -89,39 +96,23 @@ export default {
         return;
       }
 
-      /* 🟩 1 — Prevent duplicate batch_ref
-      await checkBatchRefExists.run();
-      if (checkBatchRefExists.data.length > 0) {
-        showAlert(
-          `⚠️ Batch ${appsmith.store.currentBatchRef} already exists.\nPlease generate a new batch.`,
-          "warning"
-        );
-        return;
-      }
-			*/
-
-      // 🟩 2 — Generate message_hash for all rows
+      // Generate message hashes
       const logsWithHashes = [];
       for (const row of data) {
         const hash = await this.generateMessageHash(row);
         logsWithHashes.push({ ...row, message_hash: hash });
       }
 
-      // 🟩 3 — Check for duplicates
-     const existing = await checkExistingHashes.run({
-  hash_list: logsWithHashes.map(r => r.message_hash),
-});
+      // Check duplicates
+      const existing = await checkExistingHashes.run({
+        hash_list: logsWithHashes.map(r => r.message_hash),
+      });
 
-// 🟩 FIX — accept both array and object responses
-const rows = Array.isArray(existing)
-  ? existing
-  : existing?.response || [];
+      const rows = Array.isArray(existing)
+        ? existing
+        : existing?.data || [];
 
-			
-const existingHashes = new Set(
-  rows.map((h) => h.message_hash)
-);
-
+      const existingHashes = new Set(rows.map(h => h.message_hash));
 
       const duplicates = logsWithHashes.filter(log =>
         existingHashes.has(log.message_hash)
@@ -131,20 +122,24 @@ const existingHashes = new Set(
         log => !existingHashes.has(log.message_hash)
       );
 
-      // 🟩 4 — IF DUPLICATES FOUND → open modal and STOP here
+      // Duplicate modal trigger
       if (duplicates.length > 0) {
         await storeValue("duplicateCount", duplicates.length);
-        await storeValue("duplicateOriginalLogs", duplicates);
-        await storeValue("duplicateUniqueLogs", uniqueLogs);
+        await storeValue("duplicates", duplicates);
+        await storeValue("uniqueLogs", uniqueLogs);
+
+        await storeValue(
+          "duplicateMessage",
+          `⚠️ ${duplicates.length} duplicate messages detected.\nDo you want to resend them?`
+        );
 
         showModal("ModalConfirmDuplicate");
-        return; // ⛔ STOP — wait for user confirmation
+        return;
       }
 
-      // 🟩 5 — No duplicates → continue normally
+      // No duplicates — continue
       await storeValue("mergedData", uniqueLogs);
 
-      // Insert job
       const jobResult = await insertEmailJob.run();
       const job_id = jobResult[0]?.job_id;
 
@@ -155,14 +150,9 @@ const existingHashes = new Set(
 
       await storeValue("currentJobId", job_id);
 
-      // Insert logs
       await insertEmailLogs.run();
 
-      showAlert(
-        `📨 Emails queued: ${uniqueLogs.length}. Job ID: ${job_id}`,
-        "success"
-      );
-
+      showAlert(`📨 Emails queued: ${uniqueLogs.length}. Job ID: ${job_id}`, "success");
       return true;
 
     } catch (error) {
@@ -173,34 +163,31 @@ const existingHashes = new Set(
   },
 
   // -------------------------------------------------------
-  // CONFIRM DUPLICATE — User clicked YES in modal
+  // 4) CONFIRM DUPLICATE — User clicked YES
   // -------------------------------------------------------
   async confirmSendDuplicates() {
     try {
-      const duplicates = appsmith.store.duplicateOriginalLogs || [];
-      const uniqueLogs = appsmith.store.duplicateUniqueLogs || [];
+      const duplicates = appsmith.store.duplicates || [];
+      const uniqueLogs = appsmith.store.uniqueLogs || [];
 
       if (!duplicates.length) {
         showAlert("No duplicates found to process.", "info");
         return;
       }
 
-      // 🟩 Convert duplicates → append timestamp to hash
       const timestamp = moment().format("YYYYMMDD-HHmmss");
 
-      const fixedDuplicates = duplicates.map((d) => ({
+      const fixedDuplicates = duplicates.map(d => ({
         ...d,
         message_hash: `${d.message_hash}-${timestamp}`
       }));
 
       const finalLogs = [...uniqueLogs, ...fixedDuplicates];
 
-      // Save
       await storeValue("mergedData", finalLogs);
 
       closeModal("ModalConfirmDuplicate");
 
-      // Continue sending
       await this._sendApprovedBatch(finalLogs);
 
     } catch (error) {
@@ -210,13 +197,10 @@ const existingHashes = new Set(
   },
 
   // -------------------------------------------------------
-  // FINAL SEND PROCESS AFTER APPROVAL
+  // FINAL SEND PROCESS
   // -------------------------------------------------------
-	
   async _sendApprovedBatch(finalLogs) {
     try {
-      console.log("DEBUG → finalLogs received:", finalLogs);
-
       if (!finalLogs || finalLogs.length === 0) {
         showAlert("⚠️ No logs to send.", "warning");
         return;
@@ -233,15 +217,8 @@ const existingHashes = new Set(
 
       await storeValue("currentBatchRef", newBatchRef);
 
-      console.log("DEBUG → New batch_ref:", newBatchRef);
-
       const jobResult = await insertEmailJob.run();
-
-      console.log("DEBUG → jobResult:", jobResult);
-
       const job_id = jobResult?.[0]?.job_id;
-
-      console.log("DEBUG → extracted job_id:", job_id);
 
       if (!job_id) {
         showAlert("❌ Failed to create job.", "error");
@@ -249,14 +226,9 @@ const existingHashes = new Set(
       }
 
       await storeValue("currentJobId", job_id);
-
       await storeValue("mergedData", logsWithNewBatch);
 
-      console.log("DEBUG → mergedData saved to store:", appsmith.store.mergedData);
-
-      const insertResult = await insertEmailLogs.run();
-
-      console.log("DEBUG → insertEmailLogs result:", insertResult);
+      await insertEmailLogs.run();
 
       showAlert(
         `📨 Emails queued: ${logsWithNewBatch.length}. Job ID: ${job_id}`,
@@ -268,4 +240,5 @@ const existingHashes = new Set(
       showAlert("Error sending approved batch.", "error");
     }
   }
+
 };

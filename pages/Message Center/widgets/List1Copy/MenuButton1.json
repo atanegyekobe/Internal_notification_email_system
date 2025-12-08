@@ -3,6 +3,16 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 8,
   "boxShadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+  "configureMenuItems": {
+    "config": {
+      "id": "config",
+      "isDisabled": false,
+      "isVisible": true,
+      "label": "Menu Item"
+    },
+    "id": "config",
+    "label": "Configure menu items"
+  },
   "dynamicBindingPathList": [
     {
       "key": "menuColor"
@@ -32,7 +42,7 @@
   "isLoading": false,
   "isVisible": true,
   "key": "vixlbd8krr",
-  "label": "Resend",
+  "label": "Options",
   "leftColumn": 27,
   "menuColor": "{{appsmith.theme.colors.primaryColor}}",
   "menuItems": {
@@ -42,7 +52,7 @@
       "isDisabled": false,
       "isVisible": true,
       "label": "Fetch Failed Email",
-      "onClick": "{{ FailedResendController.loadFailedEmails() }}\n",
+      "onClick": "{{ \nstoreValue(\"isFailedMode\", true)\n  .then(() => FailedResendController.loadFailedEmails());\n}}\n",
       "widgetId": ""
     },
     "menuItem2": {
@@ -56,7 +66,7 @@
     }
   },
   "menuItemsSource": "STATIC",
-  "menuVariant": "SECONDARY",
+  "menuVariant": "PRIMARY",
   "mobileBottomRow": 11,
   "mobileLeftColumn": 43,
   "mobileRightColumn": 59,
@@ -70,6 +80,7 @@
   "placement": "CENTER",
   "renderMode": "CANVAS",
   "rightColumn": 35,
+  "sourceData": [],
   "topRow": 4,
   "type": "MENU_BUTTON_WIDGET",
   "version": 1,

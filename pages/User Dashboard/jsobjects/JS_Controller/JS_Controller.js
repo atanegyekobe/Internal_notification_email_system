@@ -10,6 +10,9 @@ export default {
     else if (type === "failed") {
       getFailedLogs.run();
     }
+    else if (type === "pending") {
+      getPendingLogs.run();   // 🟩 NEW QUERY
+    }
   },
 
   getTableData() {
@@ -18,6 +21,9 @@ export default {
     }
     else if (this.view === "failed") {
       return getFailedLogs.data;
+    }
+    else if (this.view === "pending") {
+      return getPendingLogs.data; // 🟩 NEW
     }
 
     return [];

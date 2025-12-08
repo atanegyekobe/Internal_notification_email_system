@@ -4,7 +4,7 @@
   "bottomRow": 4,
   "boxShadow": "none",
   "buttonColor": "#ef4444",
-  "buttonVariant": "SECONDARY",
+  "buttonVariant": "PRIMARY",
   "dynamicBindingPathList": [
     {
       "key": "borderRadius"
@@ -33,6 +33,7 @@
   "renderMode": "CANVAS",
   "responsiveBehavior": "hug",
   "rightColumn": 62,
+  "tooltip": "Close",
   "topRow": 0,
   "type": "ICON_BUTTON_WIDGET",
   "version": 1,

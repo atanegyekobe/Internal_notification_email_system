@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n  id,\n  job_id,\n  recipient_email,\n  recipient_name,\n\ttemplate_id,\n\tpayment_type,\n  status,\n  retry_count,\n  error_message,\n  sent_at,\n\tcreated_by,\n\tcreated_at,\n\tmessage_hash\nFROM email_logs\nORDER BY id DESC;\n",
+      "body": "SELECT \n  job_id,\n  recipient_name,\n  batch_ref,\n  recipient_id,\n  updated_at,\n  status,\n  recipient_email,\n  payment_type,\n  created_by,\n  created_at,\n  payment_amount,\n  template_id,\n  error_message,\n  message_hash,\n  updated_by,\n\tsent_at\nFROM email_logs\nWHERE created_by = '{{ appsmith.store.currentUser.email }}'\nORDER BY created_at DESC;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,7 +22,11 @@
       "name": "user_data",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [],
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
     "name": "getAllLogs",
     "pageId": "Admin Dashboard",
     "runBehaviour": "MANUAL",

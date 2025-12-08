@@ -12,7 +12,11 @@
       "key": "borderRadius"
     }
   ],
-  "dynamicPropertyPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
   "dynamicTriggerPathList": [
     {
       "key": "onClick"
@@ -30,7 +34,7 @@
   "mobileRightColumn": 63,
   "mobileTopRow": 18,
   "needsErrorInfo": false,
-  "onClick": "{{JSDataHandler.parseAndFetch();\ncloseModal(Modal1.name);}}",
+  "onClick": "{{JSDataHandler.parseAndFetch();\ncloseModal(Modal1.name);\n}}\n{{ storeValue(\"isFailedMode\", false) }}\n",
   "originalBottomRow": 25,
   "originalTopRow": 21,
   "parentId": "la9g0wzvmp",

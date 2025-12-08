@@ -1,2 +1,4 @@
-SELECT * from pius.email_jobs
---where status = 'sent'
+SELECT *
+FROM pius.staff
+ORDER BY row_id DESC
+LIMIT 10;

@@ -36,6 +36,7 @@
   "renderMode": "CANVAS",
   "responsiveBehavior": "hug",
   "rightColumn": 64,
+  "tooltip": "Close ",
   "topRow": 0,
   "type": "ICON_BUTTON_WIDGET",
   "version": 1,

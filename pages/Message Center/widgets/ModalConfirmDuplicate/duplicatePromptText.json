@@ -3,7 +3,7 @@
   "borderColor": "#324479",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "3",
-  "bottomRow": 124,
+  "bottomRow": 53,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -18,7 +18,7 @@
   "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
   "fontFamily": "Poppins",
-  "fontSize": "1.25rem",
+  "fontSize": "0.875rem",
   "fontStyle": "BOLD",
   "isLoading": false,
   "isVisible": true,
@@ -32,7 +32,7 @@
   "mobileRightColumn": 23,
   "mobileTopRow": 8,
   "needsErrorInfo": false,
-  "originalBottomRow": 59,
+  "originalBottomRow": 53,
   "originalTopRow": 4,
   "overflow": "NONE",
   "parentColumnSpace": 6.9375,
@@ -43,7 +43,7 @@
   "rightColumn": 61,
   "shouldScrollContents": true,
   "shouldTruncate": false,
-  "text": "{{ appsmith.store.duplicatePromptText }}\n",
+  "text": "{{ appsmith.store.duplicatePromptText }}\n\n",
   "textAlign": "CENTER",
   "textColor": "#231f20",
   "topRow": 4,

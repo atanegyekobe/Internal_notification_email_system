@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "68f3f3e3241f5a3f1a6c0208_4df626f5-f97e-4f5f-af4b-936394252af3",
-  "id": "Upload & Process_Query1",
+  "gitSyncId": "68f3f3e3241f5a3f1a6c0208_9aa4ffe5-a676-4ad6-95f0-492b55bb1d78",
+  "id": "Admin Dashboard_Query2",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "ALTER TABLE pius.email_logs\nALTER COLUMN payment_amount TYPE VARCHAR\n\n",
+      "body": "SELECT * FROM pius.email_logs",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -23,8 +23,8 @@
       "pluginId": "postgres-plugin"
     },
     "dynamicBindingPathList": [],
-    "name": "Query1",
-    "pageId": "Upload & Process",
+    "name": "Query2",
+    "pageId": "Admin Dashboard",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }

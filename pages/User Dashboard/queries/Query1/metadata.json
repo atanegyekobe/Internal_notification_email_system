@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT * FROM pius.\"email_logs\"",
+      "body": "SELECT CONCAT('GHS ', TO_CHAR(payment_amount, 'FM999,999,999.00')) AS formatted_amount\nFROM pius.email_logs;\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

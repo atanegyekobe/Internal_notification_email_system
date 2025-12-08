@@ -11,6 +11,11 @@
       "key": "borderRadius"
     }
   ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
   "dynamicTriggerPathList": [
     {
       "key": "onClick"
@@ -23,7 +28,7 @@
   "isLoading": false,
   "isVisible": true,
   "key": "vb0wsvwokh",
-  "leftColumn": 5,
+  "leftColumn": 4,
   "minWidth": 120,
   "mobileBottomRow": 13,
   "mobileLeftColumn": 43,
@@ -41,7 +46,7 @@
   "renderMode": "CANVAS",
   "resetFormOnClick": false,
   "responsiveBehavior": "hug",
-  "rightColumn": 22,
+  "rightColumn": 21,
   "text": "Enter Data Set",
   "topRow": 1,
   "type": "BUTTON_WIDGET",

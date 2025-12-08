@@ -1,1 +1,3 @@
-SELECT COUNT(template_id) AS total_services FROM pius.email_logs;
+ALTER TABLE pius.email_logs
+ALTER COLUMN payment_amount TYPE NUMERIC(10,2)
+USING payment_amount::NUMERIC(10,2);

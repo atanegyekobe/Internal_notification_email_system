@@ -1,16 +1,20 @@
-SELECT
-  id,
+SELECT 
   job_id,
-  recipient_email,
   recipient_name,
-	template_id,
-	payment_type,
+  batch_ref,
+  recipient_id,
+  updated_at,
   status,
-  retry_count,
+  recipient_email,
+  payment_type,
+  created_by,
+  created_at,
+  payment_amount,
+  template_id,
   error_message,
-  sent_at,
-	created_by,
-	created_at,
-	message_hash
+  message_hash,
+  updated_by,
+	sent_at
 FROM email_logs
-ORDER BY id DESC;
+WHERE created_by = '{{ appsmith.store.currentUser.email }}'
+ORDER BY created_at DESC;

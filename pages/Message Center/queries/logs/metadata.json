@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "ALTER TABLE pius.email_logs\nALTER COLUMN message_hash TYPE VARCHAR(300);",
+      "body": "SELECT column_name, is_nullable, column_default\nFROM information_schema.columns\nWHERE table_schema = 'pius'\n  AND table_name = 'email_templates'\nORDER BY ordinal_position;\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

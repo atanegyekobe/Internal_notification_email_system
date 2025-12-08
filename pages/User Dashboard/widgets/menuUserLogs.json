@@ -27,6 +27,9 @@
     },
     {
       "key": "menuItems.menuItemzgo3fq602d.onClick"
+    },
+    {
+      "key": "menuItems.menuItemgtbauifcr1.onClick"
     }
   ],
   "dynamicTriggerPathList": [
@@ -35,6 +38,9 @@
     },
     {
       "key": "menuItems.menuItemzgo3fq602d.onClick"
+    },
+    {
+      "key": "menuItems.menuItemgtbauifcr1.onClick"
     }
   ],
   "isCompact": false,
@@ -47,6 +53,7 @@
   "menuColor": "{{appsmith.theme.colors.primaryColor}}",
   "menuItems": {
     "menuItem1": {
+      "iconName": "hand-up",
       "id": "menuItem1",
       "index": 0,
       "isDisabled": false,
@@ -55,7 +62,18 @@
       "onClick": "{{ JS_Controller.setView(\"logs\") }}\n",
       "widgetId": ""
     },
+    "menuItemgtbauifcr1": {
+      "iconName": "hand",
+      "id": "menuItemgtbauifcr1",
+      "index": 2,
+      "isDisabled": false,
+      "isVisible": true,
+      "label": "Pending",
+      "onClick": "{{ JS_Controller.setView(\"pending\") }}\n",
+      "widgetId": "u4khdn4cyp"
+    },
     "menuItemzgo3fq602d": {
+      "iconName": "thumbs-down",
       "id": "menuItemzgo3fq602d",
       "index": 1,
       "isDisabled": false,
