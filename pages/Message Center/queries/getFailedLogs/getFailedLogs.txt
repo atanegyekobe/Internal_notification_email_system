@@ -1,20 +1,4 @@
-SELECT 
-  job_id,
-  recipient_name,
-  batch_ref,
-  recipient_id,
-  updated_at,
-  status,
-  recipient_email,
-  payment_type,
-  created_by,
-  created_at,
-  payment_amount,
-  template_id,
-  error_message,
-  message_hash,
-  updated_by
-FROM email_logs
+SELECT *
+FROM pius.email_logs
 WHERE status = 'failed'
-AND created_by = '{{ appsmith.store.currentUser.email }}'
-ORDER BY updated_at DESC;
+ORDER BY created_at DESC;

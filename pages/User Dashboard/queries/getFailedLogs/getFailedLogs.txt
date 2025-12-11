@@ -16,5 +16,5 @@ SELECT
   updated_by
 FROM email_logs
 WHERE status = 'failed'
-AND created_by = '{{ appsmith.store.currentUser.email }}'
+--AND created_by = '{{ appsmith.store.currentUser.email }}'
 ORDER BY updated_at DESC;

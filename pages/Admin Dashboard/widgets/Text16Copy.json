@@ -1,5 +1,7 @@
 {
+  "borderColor": "#1e3a8a",
   "borderRadius": "0px",
+  "borderWidth": "1",
   "bottomRow": 63,
   "boxShadow": "none",
   "dynamicBindingPathList": [

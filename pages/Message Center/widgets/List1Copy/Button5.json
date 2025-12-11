@@ -1,20 +1,21 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 8,
+  "bottomRow": 6,
   "boxShadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonColor": "#14532d",
   "buttonVariant": "SECONDARY",
   "disabledWhenInvalid": false,
   "dynamicBindingPathList": [
     {
-      "key": "buttonColor"
-    },
-    {
       "key": "borderRadius"
     }
   ],
-  "dynamicPropertyPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
   "dynamicTriggerPathList": [
     {
       "key": "onClick"
@@ -32,7 +33,7 @@
   "mobileRightColumn": 44,
   "mobileTopRow": 4,
   "needsErrorInfo": false,
-  "onClick": "{{getAllTemplates.run(() => {\n  MessageHandler.generateMessage().then(msg => {\n    storeValue(\"previewMessage\", msg);\n    showModal(\"Modal1\");\n  });\n});}}",
+  "onClick": "{{getAllTemplates.run(() => {\n  MessageHandler.generateMessage().then(msg => {\n    storeValue(\"previewMessage\", msg);\n    showModal(\"Modal1\");\n  });\n});}}\n{{ storeValue(\"isFailedMode\", false) }}\n",
   "parentColumnSpace": 10.8984375,
   "parentId": "78ck8p7x5q",
   "parentRowSpace": 10,
@@ -44,7 +45,7 @@
   "rightColumn": 19,
   "text": "Apply",
   "tooltip": "Apply to all emails",
-  "topRow": 4,
+  "topRow": 2,
   "type": "BUTTON_WIDGET",
   "version": 1,
   "widgetId": "a1v9eresyb",

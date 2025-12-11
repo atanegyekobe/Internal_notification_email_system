@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT *\nFROM pius.email_logs\nWHERE status = 'pending'\nORDER BY created_at DESC;",
+      "body": "SELECT *\nFROM pius.email_logs\nWHERE status = 'pending'\n  AND created_by = '{{ appsmith.store.currentUser.email }}'\nORDER BY created_at DESC;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,7 +22,11 @@
       "name": "user_data",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [],
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
     "name": "getPendingLogs",
     "pageId": "User Dashboard",
     "runBehaviour": "AUTOMATIC",

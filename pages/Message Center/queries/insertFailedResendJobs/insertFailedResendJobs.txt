@@ -1,0 +1,15 @@
+INSERT INTO pius.email_jobs (
+    batch_ref,
+    total_records,
+    status,
+    created_by,
+    created_at
+)
+VALUES (
+    '{{appsmith.store.currentFailedBatchRef}}',
+    {{ (appsmith.store.failedLogsToInsert || []).length }},
+    'pending',
+    '{{appsmith.user.email}}',
+    NOW()
+)
+RETURNING job_id;

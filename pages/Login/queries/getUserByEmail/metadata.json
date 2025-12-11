@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT id, full_name, email, password_hash, role, status\nFROM pius.users\nWHERE email = {{ inp_email.text }};\n",
+      "body": "SELECT id, full_name, email, password_hash, role, status\nFROM pius.users\nWHERE email = {{ inp_email.text }};",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

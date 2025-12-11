@@ -1,5 +1,6 @@
 export default {
 
+  // Transform failed logs into UI format
   transformFailedLogs(rawLogs) {
     if (!Array.isArray(rawLogs)) return [];
 
@@ -10,10 +11,14 @@ export default {
       email: row.recipient_email || "",
       amount: row.payment_amount || 0,
       payment_type: row.payment_type || "",
-      template_id: row.template_id || 0
+      template_id: row.template_id || 0,
+      last_error: row.error_message || "",
+			status: row.status || "",
+			created_at: row.created_at || ""
     }));
   },
 
+  // Load all failed emails and show modal
   async loadFailedEmails() {
     try {
       const result = await getFailedLogs.run();
@@ -24,14 +29,17 @@ export default {
         return;
       }
 
-      await storeValue("rawFailedData", logs);
+      // Store full logs
+      await storeValue("failedRaw", logs);
 
-      const transformed = this.transformFailedLogs(logs);
+      // Transform for UI
+      const tableData = this.transformFailedLogs(logs);
+      await storeValue("failedTableData", tableData);
 
-      // 🟩 FIX: Do NOT overwrite mergedData
-      await storeValue("failedMergedData", transformed);
+      // Open modal
+      showModal("ModalFailedEmails");
 
-      showAlert(`Loaded ${transformed.length} failed emails.`, "success");
+      showAlert(`Loaded ${tableData.length} failed emails.`, "success");
 
     } catch (e) {
       console.error("loadFailedEmails Error:", e);
@@ -39,36 +47,36 @@ export default {
     }
   },
 
-  async loadSelectedRows() {
+  // Load only selected failed rows
+  async loadSelectedForResend() {
     try {
-      const selected = MergedTableFinal.selectedRows || [];
+      const selected = FailedTable.selectedRows || [];
 
       if (!selected.length) {
         showAlert("Please select at least one failed email.", "warning");
         return;
       }
 
-      const raw = appsmith.store.rawFailedData || [];
+      const raw = appsmith.store.failedRaw || [];
 
-      const selectedFull = selected.map(sel => {
-        return raw.find(r => r.id === sel.original_id);
-      }).filter(Boolean);
+      // Match full records
+      const selectedFull = selected
+        .map(sel => raw.find(r => r.id === sel.original_id))
+        .filter(Boolean);
 
       if (!selectedFull.length) {
-        showAlert("Could not match selected rows to full log data.", "error");
+        showAlert("Could not map selected rows to raw failed logs.", "error");
         return;
       }
 
-      const transformed = this.transformFailedLogs(selectedFull);
+      // Store prepared resend data
+      await storeValue("failedPrepare", selectedFull);
 
-      // 🟩 FIX: Do NOT overwrite mergedData
-      await storeValue("failedMergedData", transformed);
-
-      showAlert(`Loaded ${transformed.length} selected emails.`, "success");
+      showAlert(`Prepared ${selectedFull.length} failed emails for resend.`, "success");
 
     } catch (e) {
-      console.error("loadSelectedRows Error:", e);
-      showAlert("Unable to load selected emails.", "error");
+      console.error("loadSelectedForResend Error:", e);
+      showAlert("Unable to prepare selected failed emails.", "error");
     }
   }
 

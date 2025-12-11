@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT \n  job_id,\n  recipient_name,\n  batch_ref,\n  recipient_id,\n  updated_at,\n  status,\n  recipient_email,\n  payment_type,\n  created_by,\n  created_at,\n  payment_amount,\n  template_id,\n  error_message,\n  message_hash,\n  updated_by\nFROM email_logs\nWHERE status = 'failed'\nAND created_by = '{{ appsmith.store.currentUser.email }}'\nORDER BY updated_at DESC;\n",
+      "body": "SELECT \n  job_id,\n  recipient_name,\n  batch_ref,\n  recipient_id,\n  updated_at,\n  status,\n  recipient_email,\n  payment_type,\n  created_by,\n  created_at,\n  payment_amount,\n  template_id,\n  error_message,\n  message_hash,\n  updated_by\nFROM email_logs\nWHERE status = 'failed'\n--AND created_by = '{{ appsmith.store.currentUser.email }}'\nORDER BY updated_at DESC;\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

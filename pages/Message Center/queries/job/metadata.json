@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT *\nFROM pius.staff\nORDER BY row_id DESC\nLIMIT 10;\n",
+      "body": "ALTER TABLE pius.email_jobs\nDROP CONSTRAINT fk_email_jobs_created_by;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

@@ -1,4 +1,2 @@
-SELECT *
-FROM pius.staff
-ORDER BY row_id DESC
-LIMIT 10;
+ALTER TABLE pius.email_jobs
+DROP CONSTRAINT fk_email_jobs_created_by;

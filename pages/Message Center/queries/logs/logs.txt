@@ -1,5 +1,1 @@
-SELECT column_name, is_nullable, column_default
-FROM information_schema.columns
-WHERE table_schema = 'pius'
-  AND table_name = 'email_templates'
-ORDER BY ordinal_position;
+SELECT * FROM pius.email_logs

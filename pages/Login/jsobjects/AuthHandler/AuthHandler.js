@@ -36,27 +36,30 @@ export default {
 
       showAlert(`✅ Welcome, ${user.full_name}`, "success");
 
-      // 5️⃣ Redirect based on role (same page but different permissions)
-    if (user.role === "admin") {
-  navigateTo("Admin Dashboard");
-} else if (user.role === "user") {
-  navigateTo("User Dashboard");
-} else {
-  showAlert("⚠️ Unknown role. Please contact admin.", "warning");
-  return;
-}
+      // 5️⃣ Redirect based on role
+      if (user.role === "admin") {
+        navigateTo("Admin Dashboard");
+      } 
+      else if (user.role === "user") {
+        navigateTo("User Dashboard");
+      } 
+      else {
+        showAlert("⚠️ Unknown role. Please contact admin.", "warning");
+        return;
+      }
+
     } catch (error) {
       console.error("Login Error:", error);
       showAlert("An error occurred during login.", "error");
     }
   },
-	
-	  async logout() {
+
+  async logout() {
     try {
       // 🧹 Clear all stored session data
       await removeValue("currentUser");
 
-      // Optionally clear other stored app data (uncomment if needed)
+      // Optionally clear other stored app data
       // await removeValue("mergedData");
       // await removeValue("newVersion");
 
@@ -65,10 +68,10 @@ export default {
 
       // 🔁 Redirect back to login page
       navigateTo("LoginPage");
+
     } catch (error) {
       showAlert("Error during logout.", "error");
       console.error("Logout Error:", error);
     }
   },
-
 };

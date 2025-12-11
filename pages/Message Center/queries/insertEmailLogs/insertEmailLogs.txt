@@ -1,27 +1,37 @@
-WITH rows_raw AS (
+WITH source_data AS (
+  SELECT 
+    '{{ 
+      appsmith.store.duplicateBatchData 
+      ? JSON.stringify(appsmith.store.duplicateBatchData) 
+      : JSON.stringify(appsmith.store.finalBatchData || []) 
+    }}'::json AS data
+),
+
+rows_raw AS (
   SELECT *
-  FROM json_to_recordset('{{ JSON.stringify(appsmith.store.mergedData || []) }}') AS (
+  FROM json_to_recordset((SELECT data FROM source_data)) AS (
       staff_ids TEXT,
       full_name TEXT,
       email TEXT,
-      amount TEXT,            -- ← change NUMERIC → TEXT
+      amount TEXT,
       payment_type TEXT,
       template_id INT,
       message_hash TEXT
   )
 ),
+
 rows_clean AS (
   SELECT
     staff_ids,
     full_name,
     email,
-    -- Remove commas + cast to NUMERIC
     REPLACE(amount, ',', '')::NUMERIC AS amount,
     payment_type,
     template_id,
     message_hash
   FROM rows_raw
 )
+
 INSERT INTO pius.email_logs (
   batch_ref,
   job_id,
@@ -37,13 +47,13 @@ INSERT INTO pius.email_logs (
   created_at
 )
 SELECT
-  '{{appsmith.store.currentBatchRef}}',
+  '{{ appsmith.store.duplicateBatchData ? appsmith.store.duplicateBatchData[0].batch_ref : appsmith.store.currentBatchRef }}',
   {{appsmith.store.currentJobId}},
   staff_ids,
   email,
   full_name,
   payment_type,
-  amount,             -- now clean numeric
+  amount,
   template_id,
   message_hash,
   'pending',

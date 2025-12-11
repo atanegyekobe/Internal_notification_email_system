@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 51,
+  "bottomRow": 52,
   "boxShadow": "none",
   "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
   "buttonVariant": "TERTIARY",
@@ -59,7 +59,7 @@
     "Buttons"
   ],
   "text": "Don't have an account? Sign Up",
-  "topRow": 47,
+  "topRow": 48,
   "type": "BUTTON_WIDGET",
   "version": 1,
   "widgetId": "fe0q1utnz7",

@@ -1,2 +1,0 @@
-SELECT CONCAT('GHS ', TO_CHAR(payment_amount, 'FM999,999,999.00')) AS formatted_amount
-FROM pius.email_logs;

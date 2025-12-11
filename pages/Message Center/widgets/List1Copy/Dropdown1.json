@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 8,
+  "bottomRow": 7,
   "boxShadow": "none",
   "defaultOptionValue": "",
   "dynamicBindingPathList": [
@@ -58,7 +58,7 @@
   "serverSideFiltering": false,
   "shouldScrollContents": true,
   "sourceData": "{{ getAllTemplates.data.map(t => ({\n  label: t.payment_type,\n  value: t.payment_type\n})) }}\n",
-  "topRow": 4,
+  "topRow": 2,
   "type": "SELECT_WIDGET",
   "version": 1,
   "widgetId": "w3lwfotme2",
